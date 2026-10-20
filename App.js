@@ -1,5 +1,6 @@
 import React from 'react';
-import { SafeAreaView, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 import { GameProvider, useGame } from './src/context/GameContext';
 import GameScreen from './src/screens/GameScreen';
@@ -18,9 +19,11 @@ function AppContent() {
 
 export default function App() {
   return (
-    <GameProvider>
-      <AppContent />
-    </GameProvider>
+    <SafeAreaProvider>
+      <GameProvider>
+        <AppContent />
+      </GameProvider>
+    </SafeAreaProvider>
   );
 }
 
